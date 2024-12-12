@@ -1,4 +1,4 @@
-export class Vehicle {
+export default class Vehicle {
     #completedServices;
 
     constructor(make, model, year) {
@@ -49,5 +49,23 @@ export class ElectricVehicle extends Vehicle {
                 - Check battery health
                 - Update software
                 - Inspect charging system`;
+    }
+}
+
+export class HybridVehicle extends Vehicle {
+    constructor(make, model, year, batteryCapacity, engineSize){
+        super(make, model, year);
+        this.engineSize = engineSize;
+        this.batteryCapacity = batteryCapacity;
+        this.fuelType = "Hybrid";
+    }
+    getMaintenanceChecklist() {
+        return `Checklist for ${this.getInfo()}:
+        - Check battery health
+        - Update software
+        - Inspect charging system
+        - Check oil levels
+        - Inspect spark plugs
+        - Check fuel system`;
     }
 }

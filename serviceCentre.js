@@ -19,6 +19,11 @@ export default class ServiceCentre {
                 cost: 50, 
                 duration: '30 minutes',
                 description: 'Computer diagnostic check'
+            }],
+            ['premium', { 
+                cost: 300, 
+                duration: '4 hours',
+                description: 'Premium vehicle service and valet'
             }]
         ]);
     }
@@ -48,5 +53,25 @@ export default class ServiceCentre {
             console.log(`Cost: £${service.cost}`);
             console.log(`Duration: ${service.duration}`);
         });
+    }
+
+    calculateServiceCosts(vehicle) {
+        console.log("Calculating total service costs:");
+        let total = 0;
+
+        // vehicle.getCompletedServices().forEach((serviceType) => {
+        //     console.log("Service type: ")
+        //     if(this.#serviceMenu.has(serviceType)){
+        //         
+        //         total += this.#serviceMenu.get(serviceType).cost;
+        //     }
+        // })
+        vehicle.getCompletedServices().forEach((serviceType) => {
+            if (this.#serviceMenu.has(serviceType)) {
+                console.log(`\n ${serviceType}`);
+                total += this.#serviceMenu.get(serviceType).cost;
+            }
+        });
+        console.log(`Total cost: ${total}`);
     }
 }
